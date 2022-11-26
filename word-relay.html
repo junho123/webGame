@@ -18,7 +18,6 @@
     const $order = document.querySelector('#order');
     let word; // 제시어
     let newWord; // 현재 단어
-
     
     const onClickButton = () => {
       if (newWord.length === 3 && (!word || word[word.length - 1] === newWord[0])) {
@@ -38,19 +37,21 @@
           $input.focus();
       }
     };
+
     const onInput = (event) => {
       newWord = event.target.value;
     };
+
     const onInputEnter = (event) => {
       if (event.keyCode === 13) {
         onClickButton();
       }
-    }
-    console.log(Number(null));
+    };
+
     if (number !== 0) {
       $button.addEventListener('click', onClickButton);
       $input.addEventListener('input', onInput);
-      $input.addEventListener('keydown', onInputEnter)
+      $input.addEventListener('keydown', onInputEnter);
       }
   </script>
 </body>
