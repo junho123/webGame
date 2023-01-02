@@ -17,21 +17,21 @@
     const $form = document.querySelector('#form');
     const $logs = document.querySelector('#logs');
 
+    // 무작위로 숫자 4개 뽑기
     const numbers = [];
     for (let n = 1; n <= 9; n++) {
       numbers.push(n);
     }
-
+    
     const answer = [];
     for (let n = 0; n <= 3; n++) {
       const index = Math.floor( Math.random() * numbers.length );
       answer.push( numbers[index] );
       numbers.splice( index, 1 );
     }
-
     console.log(answer);
 
-    // 입력값 검증하기
+    // 입력값 유효성 검사
     const tries = [];
     function checkInput (input) {
       if (input.length !== 4) {
@@ -46,16 +46,22 @@
       return true;
     }
 
+    // 답 제출
     $form.addEventListener('submit', (event) => {
       event.preventDefault(); // 폼 태그 기본 동작 취소
       const value = $input.value;
       $input.value = '';
+
       const valid = checkInput(value);
       if (!valid) return;
+
+      // 홈런인지 검사
       if (answer.join('') === value) {
         $logs.textContent = '홈런!';
         return;
       }
+
+      // 10번 시도 했는가?
       if (tries.length >= 9) {
         const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
         $logs.appendChild(message);
@@ -67,7 +73,6 @@
       let ball = 0;
       for (let i = 0; i < answer.length; i++) {
         const index = value.indexOf(answer[i]);
-
         if (index > -1) { // 일치하는 숫자 발견
           if (index === i) { // 자릿수도 같음
             strike += 1;
@@ -78,7 +83,7 @@
       }
       $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
       tries.push(value);
-    })
+    });
   </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
   <div>제시어: <span id='word'></span></div>
   <input type='text'>
   <button>입력</button>
-  
+
   <script>
     const number = Number(prompt('몇 명이 참가하나요?'));
     const $button = document.querySelector('button');
@@ -20,6 +20,7 @@
     let newWord; // 현재 단어
     
     const onClickButton = () => {
+      // 올바른 단어인지 판단
       if (newWord.length === 3 && (!word || word[word.length - 1] === newWord[0])) {
         word = newWord;
         $word.textContent = word;
@@ -42,6 +43,7 @@
       newWord = event.target.value;
     };
 
+    // enter 키도 적용
     const onInputEnter = (event) => {
       if (event.keyCode === 13) {
         onClickButton();

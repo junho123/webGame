@@ -67,7 +67,7 @@
     let numTwo = '';
     const $result = document.querySelector('#result');
     const $operator = document.querySelector('#operator');
-
+    
     const onClickNumber = (number) => () => {
       if (!operator) {
         numOne += number;
@@ -105,6 +105,8 @@
     document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
     document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
     document.querySelector('#multiply').addEventListener('click', onClickOperator('x'));
+
+    // 결과 계산
     document.querySelector('#calculate').addEventListener('click', () => {
       if (numTwo) {
         switch (operator) {
@@ -136,6 +138,7 @@
       }
     });
 
+    // 계산기 초기화
     document.querySelector('#clear').addEventListener('click', () => {
       numOne = '';
       operator = '';
