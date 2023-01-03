@@ -42,7 +42,24 @@
     console.log(winBalls, bonus);
 
     // 1초마다 공을 하나씩 화면에 표시
-    // const $result = 
+    const $result = document.querySelector('#result');
+    function drawBall(number, $parent) {
+      const $ball = document.createElement('div');
+      $ball.className = 'ball';
+      $ball.textContent = number;
+      $parent.appendChild($ball);
+    }
+
+    for (var i = 0; i < winBalls.length; i++) {
+      setTimeout(() => {
+        drawBall(winBalls[i], $result);
+      }, 1000 * (i + 1));
+    }
+
+    const $bonus = document.querySelector('#bonus');
+    setTimeout(() => {
+      drawBall(bonus, $bonus);
+    }, 7000);
   </script>
 </body>
 </html>
