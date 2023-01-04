@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 RPG</title>
+</head>
+<body>
+  <form id="start-screen">
+    <input id="name-input" placeholder="주인공 이름을 입력하세요!" />
+    <button id="start">시작</button>
+  </form>
+  <div id="screen">
+    <div id="hero-stat">
+      <span id="hero-name"></span>
+      <span id="hero-level"></span>
+      <span id="hero-hp"></span>
+      <span id="hero-xp"></span>
+      <span id="hero-att"></span>
+    </div>
+    <form id="game-menu" style="display: none;">
+      <div id="menu-1">1.모험</div>
+      <div id="menu-2">2.휴식</div>
+      <div id="menu-3">3.종료</div>
+      <input id="menu-input" />
+      <button id="menu-button">입력</button>
+    </form>
+    <form id="battle-menu" style="display: none;">
+      <div id="battle-1">1.공격</div>
+      <div id="battle-2">2.회복</div>
+      <div id="battle-3">3.도망</div>
+      <input id="battle-input" />
+      <button id="battle-button">입력</button>
+    </form>
+    <div id="message"></div>
+    <div id="monster-stat">
+      <span id="monster-name"></span>
+      <span id="monster-hp"></span>
+      <span id="monster-att"></span>
+    </div>
+  </div>
+</body>
+<script>
+  // 주인공 이름을 입력 받는다
+
+  // 주인공을 생성한다
+
+  // 메뉴 입력 버튼 클릭 시
+
+  // 몇 번인지 판별
+
+  // 모험이면
+
+  // 적을 생성한다
+
+  // 일반 메뉴를 전투 메뉴로 전환한다
+
+  // 휴식이면
+
+  // 주인공의 체력을 모두 회복한다
+
+  // 종료이면
+
+  // 화면에 종료 안내 메시지를 표시한다
+
+  // 전투메뉴 입력 버튼 클릭 시
+
+  // 몇 번인지 판별
+
+  // 공격이면 
+
+  // 몬스터의 체력을 주인공의 공격력만큼 감소
+
+  // 주인공의 체력을 몬스터의 공격력만큼 감소
+
+  // 회복이면
+
+  // 주인공의 체력을 20 회복한다
+
+  // 주인공의 체력을 몬스터의 공격력 만큼 감소
+
+  // 도망이면
+
+  // 전투 메뉴에서 빠져나와 일반 메뉴로 전환
+</script>
+</html>
