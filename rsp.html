@@ -23,23 +23,88 @@
 
   <script>
     const $computer = document.querySelector('#computer');
+    const $score = document.querySelector('#score');
+    const $scissors = document.querySelector('#scissors');
+    const $rock = document.querySelector('#rock');
+    const $paper = document.querySelector('#paper');
     const IMG_URL = './Image/rsp.png';
     $computer.style.background = `url(${IMG_URL}) 0 0`;
     $computer.style.backgroundSize = 'auto 200px';
 
+    const rspX = {
+      scissors: '0', // 가위
+      rock: '-220px', // 바위
+      paper: '-440px', // 보
+    }
+
     // 0.05초마다 가위바위보 값을 바꾼다
+    let computerChoice = 'scissors';
+    const changeComputerHand = () => {
+      if (computerChoice === 'rock') {
+        computerChoice = 'scissors';
+      } else if (computerChoice === 'scissors') {
+        computerChoice = 'paper';
+      } else if (computerChoice === 'paper') {
+        computerChoice = 'rock';
+      }
+      $computer.style.background = `url(${IMG_URL}) ${rspX[computerChoice]} 0`;
+      $computer.style.backgroundSize = 'auto 200px';
+    }
 
     // 값에 따라 그림을 바꾼다
+    let intervalId = setInterval(changeComputerHand, 50);
+
+    // 가위: 1, 바위: 0, 보: -1
+    // 나\컴퓨터  가위  바위  보
+    // 가위      0    1    2
+    // 바위      -1   0    1
+    // 보       -2   -1    0
+    const scoreTable = {
+      scissors: 1,
+      rock: 0,
+      paper: -1,
+    }
 
     // 가위바위보 버튼 클릭
+    let clickable = true;
+    let score = 0;
+    const clickBtn = () => {
+      if (clickable) {
+        // 돌아가는 그림을 멈춘다
+        clearInterval(intervalId);
+        clickable = false;
+        const myChoice = event.target.textContent === '가위'
+          ? 'scissors'
+          : event.target.textContent === '바위'
+            ? 'rock'
+            : 'paper';
+        const myScore = scoreTable[myChoice];
+        const computerScore = scoreTable[computerChoice];
+        const diff = myScore - computerScore;
 
-    // 돌아가는 그림을 멈춘다
-
-    // 점수를 계산한다
-
-    // 점수를 표시한다
-
-    // 1초 후에 그림을 돌린다
+        // 점수를 계산하고 화면에 표시
+        let message;
+        if ([2, -1].includes(diff)) {
+          score += 1;
+          message = '승리';
+        } else if ([-2, 1].includes(diff)) {
+          score -= 1;
+          message = '패배';
+        } else {
+          message = '무승부';
+        }
+        $score.textContent = `${message} 총: ${score}점`;
+        
+        // 1초 후에 그림을 돌린다
+        setTimeout(() => {
+          clickable = true;
+          intervalId = setInterval(changeComputerHand, 50);
+        }, 1000);
+      }
+    };
+    $scissors.addEventListener('click', clickBtn);
+    $rock.addEventListener('click', clickBtn);
+    $paper.addEventListener('click', clickBtn);
   </script>
 </body>
 </html>
