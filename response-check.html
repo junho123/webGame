@@ -37,22 +37,36 @@
     let timeoutId;
 
     $screen.addEventListener('click', function() {
+      // 파란 화면을 띄움
       if ($screen.classList.contains('waiting')) { // 대기 화면
+
+        // 파란 화면 클릭시 빨강 화면으로 전환
         $screen.classList.remove('waiting');
         $screen.classList.add('ready');
         $screen.textContent = '초록색이 되면 클릭하세요';
+
+        // 랜덤 타이머 작동
         timeoutId = setTimeout(function() {
+          // 초록 화면을 띄우고 시간을 잼
           startTime = new Date();
           $screen.classList.remove('ready');
           $screen.classList.add('now');
           $screen.textContent = '클릭하세요!';
         }, Math.floor(Math.random() * 1000) + 2000); // 2000 ~ 3000 사이 수
+
+      // 빨강 화면 클릭시
       } else if ($screen.classList.contains('ready')) { // 준비 화면
         clearTimeout(timeoutId);
         $screen.classList.remove('ready');
+
+        // 파랑 화면으로 전환하고 성급했다고 안내
         $screen.classList.add('waiting');
         $screen.textContent = '너무 성급하시군요!';
+
+      // 초록 화면 클릭 시
       } else if ($screen.classList.contains('now')) { // 클릭 화면
+
+        // 클릭할 때까지 얼마나 걸렸는지 측정하고 표시
         endTime = new Date();
         const current = endTime - startTime;
         records.push(current);
@@ -60,28 +74,13 @@
         $result.textContent = `현재 ${current}ms, 평균: ${average}ms`;
         startTime = null;
         endTime = nul;
+
+        // 파랑 화면으로 전환
         $screen.classList.remove('now');
         $screen.classList.add('waiting');
         $screen.textContent = '클릭해서 시작하세요';
       }
     })
-    // 파랑 화면을 띄운다
-
-    // 파란 화면을 클릭하면 빨강 화면으로 전환
-
-    // 랜덤 타이머 작동
-
-    // 초록 화면을 띄우고 시간을 잼
-
-    // 빨강 화면 클릭시
-
-    // 파랑 화면으로 전환하고 성급했다고 안내
-
-    // 초록 화면 클릭 시
-
-    // 클릭할 때까지 얼마나 걸렸는지 측정하고 표시
-
-    // 파랑 화면으로 전환
   </script>
 </body>
 </html>

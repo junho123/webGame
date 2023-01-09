@@ -83,6 +83,10 @@
         const diff = myScore - computerScore;
 
         // 점수를 계산하고 화면에 표시
+        // 나 - 컴퓨터 = 결과값
+        // 이길 때 : 2, -1
+        // 질 때 : 1, -2
+        // 비길 때 : 0
         let message;
         if ([2, -1].includes(diff)) {
           score += 1;

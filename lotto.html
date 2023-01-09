@@ -29,8 +29,8 @@
     // 숫자를 섞는다
     const shuffle = [];
     while (candidate.length > 0) {
-      const random = Math.floor(Math.random() * candidate.length); // 무작위 인덱스 뽑기
-      const spliceArray = candidate.splice(random, 1); // 뽑은 값은 배열에 들어 있음
+      const random = Math.floor(Math.random() * candidate.length);
+      const spliceArray = candidate.splice(random, 1);
       const value = spliceArray[0]; // 배열에 들어 있는 값을 꺼내어
       shuffle.push(value); // shuffle 배열에 넣기
     }
