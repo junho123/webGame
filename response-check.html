@@ -57,9 +57,9 @@
       // 빨강 화면 클릭시
       } else if ($screen.classList.contains('ready')) { // 준비 화면
         clearTimeout(timeoutId);
-        $screen.classList.remove('ready');
 
         // 파랑 화면으로 전환하고 성급했다고 안내
+        $screen.classList.remove('ready');
         $screen.classList.add('waiting');
         $screen.textContent = '너무 성급하시군요!';
 
@@ -73,7 +73,7 @@
         const average = records.reduce((a, c) => a + c) / records.length;
         $result.textContent = `현재 ${current}ms, 평균: ${average}ms`;
         startTime = null;
-        endTime = nul;
+        endTime = null;
 
         // 파랑 화면으로 전환
         $screen.classList.remove('now');
